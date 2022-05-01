@@ -50,8 +50,8 @@ const managerInputs = () => {
                 name: "id",
                 message: "Please enter your employee ID (Numeric characters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 4) {
-                        return ("Your employee ID is a minimum of four (4) characters.")
+                    if (!answer || answer.length <= 2) {
+                        return ("Your employee ID is a minimum of two (2) characters.")
                     }
                     return true;
                 }
@@ -74,8 +74,8 @@ const managerInputs = () => {
                 name: "officeNo",
                 message: "Please enter your office number. (Numeric charcters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length >= 6) {
-                        return ("Your office number is a minimum of six (6) characters.")
+                    if (!answer || answer.length >= 2) {
+                        return ("Your office number is a minimum of two (2) characters.")
                     }
                     return true;
                 }
@@ -110,8 +110,8 @@ const internInputs = () => {
                 name: "id",
                 message: "Please enter the employee ID (Numeric characters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 4) {
-                        return ("An employee ID is a minimum of four (4) characters.")
+                    if (!answer || answer.length <= 2) {
+                        return ("Your employee ID is a minimum of two (2) characters.")
                     }
                     return true;
                 }
@@ -212,10 +212,9 @@ const engineerInputs = () => {
                 name: "id",
                 message: "Please enter the employee ID (Numeric characters only). Line 113",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 4) {
-                        return ("An employee ID is a minimum of four (4) characters.")
+                    if (!answer || answer.length <= 2) {
+                        return ("Your employee ID is a minimum of two (2) characters.")
                     }
-                    console.log(answer);
                     return true;
                 }
             },
