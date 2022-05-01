@@ -15,7 +15,7 @@ describe("Engineer tests", () => {
         })
         //positive test for engineer role
         it("should have a role of 'Engineer'", () => {
-            const testEngineer = new Engineer("Jazz", 16, "jazz@email.com");
+            const testEngineer = new Engineer("Jazz", 16, "jazz@email.com", "https://github.com/jazzberriess");
 
             expect(testEngineer.getRole()).toEqual("Engineer");
         })
@@ -26,7 +26,7 @@ describe("Engineer tests", () => {
 
             const githubErr = "GitHub URL cannot be null or an empty string."
             expect(() => {
-                testEngineer.gitHub()
+                testEngineer.getGitHub()
                     .toThrow(githubErr);
             })
         })
@@ -37,7 +37,7 @@ describe("Engineer tests", () => {
 
             const githubErr = "GitHub URL must include the 'https://'"
             expect(() => {
-                testEngineer.gitHub()
+                testEngineer.getGitHub()
                     .toThrow(githubErr);
             })
         })
@@ -48,7 +48,7 @@ describe("Engineer tests", () => {
 
             const githubErr = "GitHub URL must include the gitHub username after the '.com/''"
             expect(() => {
-                testEngineer.gitHub()
+                testEngineer.getGitHub()
                     .toThrow(githubErr);
             })
         })
