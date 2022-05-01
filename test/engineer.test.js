@@ -24,7 +24,18 @@ describe("Engineer tests", () => {
 
             const testEngineer = new Engineer("Jazz", 16, "jazz@email.com", "")
 
-            const githubErr = "GitHub URL cannot be null or an empty string."
+            const githubErr = "GitHub URL cannot be an empty string."
+            expect(() => {
+                testEngineer.getGitHub()
+                    .toThrow(githubErr);
+            })
+        })
+        //negative test for engineer github
+        it("should error if the githib is null", () => {
+
+            const testEngineer = new Engineer("Jazz", 16, "jazz@email.com")
+
+            const githubErr = "GitHub URL cannot be null"
             expect(() => {
                 testEngineer.getGitHub()
                     .toThrow(githubErr);
