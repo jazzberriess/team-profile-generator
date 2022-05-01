@@ -1,8 +1,9 @@
-const { qualifiedTypeIdentifier } = require("@babel/types");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateFile = require("./lib/generate");
 // const engineerInputs = require("./lib/inquirer");
+const responsesArray = new Map();
+// const responsesArray = [];
 
 const createEmployee = () => {
     inquirer
@@ -24,7 +25,8 @@ const createEmployee = () => {
                 console.log("Manager chosen")
                 return managerInputs();
             } else {
-                quit();
+                // quit();
+                writeToFile();
             }
         });
 }
@@ -79,7 +81,13 @@ const managerInputs = () => {
                 }
             }
         ])
-        .then(writeToFile)
+        // .then(pushResponses)
+        // .then(console.log(responsesArray))
+        .then((answer) =>
+            responsesArray.set("Manager Name", answer.name)
+                .set("Manager ID", answer.id)
+                .set("Manager Email", answer.email)
+                .set("Manager OfficeNo", answer.officeNo))
         .then(createEmployee);
 };
 
@@ -133,7 +141,14 @@ const internInputs = () => {
                 }
             }
         ])
-        .then(writeToFile)
+        // .then(writeToFile)
+        // .then(pushResponses)
+        // .then(console.log(responsesArray))
+        .then((answer) =>
+            responsesArray.set("Intern Name", answer.name)
+                .set("Intern ID", answer.id)
+                .set("Intern Email", answer.email)
+                .set("Intern School", answer.school))
         .then(createEmployee);
 };
 
@@ -230,26 +245,44 @@ const engineerInputs = () => {
                     return true;
                 }
             }])
-        .then(writeToFile)
-        .then(createEmployee);
+
+        // .then(writeToFile)
+        // .then(pushResponses)
+        // .then(console.log(responsesArray))
+        .then((answer) =>
+            responsesArray.set("Engineer Name", answer.name)
+                .set("Engineer ID", answer.id)
+                .set("Engineer Email", answer.email)
+                .set("Engineer GitHub", answer.github))
+        .then(createEmployee)
 }
 
+// function pushResponses(answer) {
+//     responsesArray.push(answer)
+// };
 
 function writeToFile(answer) {
 
     console.log(answer, "line 231");
+    console.log(responsesArray, "line 251");
+    // let managerAnswers = managerInputs(answer);
+    // let engineerAnswers = engineerInputs(answer);
+    // let internAnswers = internInputs(answer);
 
-    let finalAnswers = {
-        ...answer
-    };
+    // let finalAnswers =
+    //     responsesArray
+    // ...answer,
 
-    fs.writeFileSync('test.txt', generateFile(finalAnswers));
+    console.log(responsesArray, "line 249");
+
+
+    fs.appendFileSync('test.html', generateFile(responsesArray));
 
 }
 
-function quit() {
-    process.exitCode = 1;
-}
+// function quit() {
+//     process.exitCode = 1;
+// }
 
 // function generateFile() {
 //     writeToFile();
@@ -280,4 +313,5 @@ module.exports = {
     engineerInputs,
     internInputs,
     generateFile,
+    responsesArray,
 }
