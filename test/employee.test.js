@@ -29,7 +29,7 @@ describe("Employee tests", () => {
 
             const testEmployee = new Employee("", 16, "jazz@email.com")
 
-            const nameErr = "Name cannot be null or an empry string."
+            const nameErr = "Name cannot be null or an empty string."
             expect(() => {
                 testEmployee.getName()
                     .toThrow(nameErr);
