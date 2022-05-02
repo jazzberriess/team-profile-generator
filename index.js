@@ -1,12 +1,20 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateFile = require("./lib/generate");
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+
 // const engineerInputs = require("./lib/inquirer");
 // const responsesArray = new Map();
 // const responsesArray = [];
-const managerResponses = new Map();
-const engineerResponses = new Map();
-const internResponses = new Map();
+
+// const managerResponses = new Map();
+// const engineerResponses = new Map();
+// const internResponses = new Map();
+
+const allEmployees = [];
 
 const createEmployee = () => {
     inquirer
@@ -86,12 +94,16 @@ const managerInputs = () => {
         ])
         // .then(pushResponses)
         // .then(console.log(responsesArray))
-        .then((answer) =>
-            managerResponses.set("Manager Name", answer.name)
-                .set("Manager ID", answer.id)
-                .set("Manager Email", answer.email)
-                .set("Manager OfficeNo", answer.officeNo))
+        .then((answer) => {
+            // managerResponses.set("Manager Name", answer.name)
+            //     .set("Manager ID", answer.id)
+            //     .set("Manager Email", answer.email)
+            //     .set("Manager OfficeNo", answer.officeNo))
+            let newManager = new Manager(answer.name, answer.id, answer.email, answer.github); //parameters go here!
+            allEmployees.push(newManager);
+        })
         .then(createEmployee);
+
 };
 
 const internInputs = () => {
@@ -147,11 +159,14 @@ const internInputs = () => {
         // .then(writeToFile)
         // .then(pushResponses)
         // .then(console.log(responsesArray))
-        .then((answer) =>
-            internResponses.set("Intern Name", answer.name)
-                .set("Intern ID", answer.id)
-                .set("Intern Email", answer.email)
-                .set("Intern School", answer.school))
+        .then((answer) => {
+            // internResponses.set("Intern Name", answer.name)
+            //     .set("Intern ID", answer.id)
+            //     .set("Intern Email", answer.email)
+            //     .set("Intern School", answer.school))
+            let newIntern = new Intern(answer.name, answer.id, answer.email, answer.github); //parameters go here!
+            allEmployees.push(newIntern);
+        })
         .then(createEmployee);
 };
 
@@ -251,12 +266,17 @@ const engineerInputs = () => {
         // .then(writeToFile)
         // .then(pushResponses)
         // .then(console.log(responsesArray))
-        .then((answer) =>
-            engineerResponses.set("Engineer Name", answer.name)
-                .set("Engineer ID", answer.id)
-                .set("Engineer Email", answer.email)
-                .set("Engineer GitHub", answer.github))
+        .then((answer) => {
+            let newEngineer = new Engineer(
+                answer.name, answer.id, answer.email, answer.github); //parameters go here!
+            allEmployees.push(newEngineer);
+        })
+        // engineerResponses.set("Engineer Name", answer.name)
+        //     .set("Engineer ID", answer.id)
+        //     .set("Engineer Email", answer.email)
+        //     .set("Engineer GitHub", answer.github))
         .then(createEmployee)
+
 }
 
 // function pushResponses(answer) {
@@ -266,10 +286,11 @@ const engineerInputs = () => {
 function writeToFile(answer) {
 
     console.log(answer, "line 231");
+    console.log(allEmployees + "line279");
     // console.log(responsesArray, "line 251");
-    console.log(managerResponses, "line 270");
-    console.log(internResponses, "line 271");
-    console.log(engineerResponses, "line 272");
+    // console.log(managerResponses, "line 270");
+    // console.log(internResponses, "line 271");
+    // console.log(engineerResponses, "line 272");
     // let managerAnswers = managerInputs(answer);
     // let engineerAnswers = engineerInputs(answer);
     // let internAnswers = internInputs(answer);
@@ -280,8 +301,8 @@ function writeToFile(answer) {
 
     // console.log(responsesArray, "line 249");
 
-
-    fs.appendFileSync('test.html', generateFile(managerResponses, internResponses, engineerResponses));
+    fs.appendFileSync('test.html', generateFile(allEmployees));
+    // fs.appendFileSync('test.html', generateFile(managerResponses, internResponses, engineerResponses));
 
 }
 
@@ -314,12 +335,11 @@ createEmployee();
 
 
 module.exports = {
-    managerInputs,
-    engineerInputs,
-    internInputs,
+    Employee,
+    Manager,
+    Engineer,
+    Intern,
+    allEmployees,
     generateFile,
-    // responsesArray,
-    managerResponses,
-    engineerResponses,
-    internResponses,
+
 }
