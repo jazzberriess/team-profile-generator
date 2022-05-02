@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateFile = require("./lib/generate");
+const generateFile = require("./dist/generate");
 const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
@@ -82,7 +82,7 @@ const managerInputs = () => {
 
             {
                 type: "number",
-                name: "officeNo",
+                name: "officeNumber",
                 message: "Please enter your office number. (Numeric charcters only).",
                 validate: (answer) => {
                     if (!answer || answer.length >= 2) {
@@ -99,7 +99,7 @@ const managerInputs = () => {
             //     .set("Manager ID", answer.id)
             //     .set("Manager Email", answer.email)
             //     .set("Manager OfficeNo", answer.officeNo))
-            let newManager = new Manager(answer.name, answer.id, answer.email, answer.github); //parameters go here!
+            let newManager = new Manager(answer.name, answer.id, answer.email, answer.officeNumber); //parameters go here!
             allEmployees.push(newManager);
         })
         .then(createEmployee);
@@ -164,7 +164,7 @@ const internInputs = () => {
             //     .set("Intern ID", answer.id)
             //     .set("Intern Email", answer.email)
             //     .set("Intern School", answer.school))
-            let newIntern = new Intern(answer.name, answer.id, answer.email, answer.github); //parameters go here!
+            let newIntern = new Intern(answer.name, answer.id, answer.email, answer.school); //parameters go here!
             allEmployees.push(newIntern);
         })
         .then(createEmployee);

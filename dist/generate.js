@@ -1,6 +1,6 @@
 // const createCards = require("../dist/cards")
 
-const Engineer = require("./engineer");
+// const Engineer = require("./engineer");
 
 // const { forEach } = require("lodash");
 
@@ -102,8 +102,10 @@ function createFile(allEmployees) {
 
             </header>
             <section>
+            <div class="row row-cols-1 row-cols-md-3">
             ${createEmployeeCards(allEmployees)}
 
+            </div>
             </section>
 
          <footer>
@@ -126,20 +128,26 @@ function createEmployeeCards(allEmployees) {
     let cardDetails = "";
     // allEmployees.forEach((value, key) => {
 
+    // let otherDetail;
+
     for (let i = 0; i < allEmployees.length; i++) {
 
-        // let role = `${allEmployees[i].role}`
-        // let name = `${allEmployees[i].name}`
-        // let id = `${allEmployees[i].id}`
-        // let email = `${allEmployees[i].email}`
-        // let other = `${allEmployees[i].gitHub || allEmployees[i].school || allEmployees[i].officeNo}`
-
         cardDetails +=
-            `<p>${allEmployees[i].role}</p>
-            <p>${allEmployees[i].name}</p>
-            <p>${allEmployees[i].id}</p>
-            <p>${allEmployees[i].email}</p>
-            <p>${allEmployees[i].gitHub || allEmployees[i].school || allEmployees[i].officeNo}</p >
+            `
+            <div class="col">
+            <div class="card" style="max-width: 18rem;">
+            <div class="card-body">
+            <h2 class="card-text">${allEmployees[i].name}</h2>
+            <h3 class="card-title">${allEmployees[i].role}</h3>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">${allEmployees[i].id}</li>
+            <li class="list-group-item">${allEmployees[i].email}</li>
+            <li class="list-group-item">${allEmployees[i].gitHub || allEmployees[i].school || allEmployees[i].officeNumber}</li>
+            </ul>
+            </div>
+            </div>
+            </div>
+
             `
 
         console.log(allEmployees[i] + "line 131");
@@ -231,7 +239,7 @@ function createEmployeeCards(allEmployees) {
 //         // for (const [key, value] of responsesArray.entries()) {
 
 //         let results2 = `<div>
-//         <p>${key}: ${value} </p>
+//         <p>${key}: ${value} </li>
 //         </div>`
 
 //         //     console.log(key, value);
