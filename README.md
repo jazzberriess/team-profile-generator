@@ -47,9 +47,9 @@ Then, answer the prompts.
 Once the prompts have been filled, an index.html file will be generated in the dist folder for you to then copy or move to whichever location you prefer.
 
 ## Live Demo
-### [Video demonstration of the application being used](https://drive.google.com/file/d/1xI8cGZrlmJ4l_mLm5O-Jx4SLXXIhZDwh/view) in the integrated terminal in VS Code.
+### [Video demonstration of the application being used](https://drive.google.com/file/d/1erocu6cCTiuupMLNhHFyFsF_9L4VjEbL/view) in the integrated terminal in VS Code.
 
-A very similar index.html file that was generated during this video can be found by viewing the [index.html file](https://github.com/jazzberriess/team-profile-generator/blob/main/dist/index.html).
+The index.html file that was generated during this video can be found by viewing the [index.html file](https://github.com/jazzberriess/team-profile-generator/blob/main/dist/index.html).
 
 ### Demonstration gif of the application passing written tests from the terminal:
 ![Demo of the application passing tests from the terminal](./images/team-profile-generator-run-test.gif)
