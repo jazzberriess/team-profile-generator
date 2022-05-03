@@ -61,8 +61,8 @@ const managerInputs = () => {
                 name: "id",
                 message: "Please enter the employee ID (Numeric characters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 2) {
-                        return ("The employee ID is a minimum of two (2) characters.")
+                    if (!answer || typeof answer != "number") {
+                        return ("The employee ID must be a numeric value.")
                     }
                     return true;
                 }
@@ -73,10 +73,13 @@ const managerInputs = () => {
                 name: "email",
                 message: "Please enter the work E-mail address.",
                 validate: (answer) => {
-                    if (!answer || !answer.includes("@")) {
-                        return ("Please enter a valid E-mail address.")
+
+                    const regexEmailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+                    if (regexEmailVal.test(answer)) {
+                        return true
                     }
-                    return true;
+                    return ("Please enter a valid E-mail address.");
                 }
             },
 
@@ -85,8 +88,8 @@ const managerInputs = () => {
                 name: "officeNumber",
                 message: "Please enter the office number. (Numeric charcters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 2) {
-                        return ("The office number is a minimum of two (2) characters.")
+                    if (!answer || typeof answer != "number") {
+                        return ("The office number must be a numeric value.")
                     }
                     return true;
                 }
@@ -121,8 +124,8 @@ const engineerInputs = () => {
                 name: "id",
                 message: "Please enter the employee ID (Numeric characters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 2) {
-                        return ("The employee ID is a minimum of two (2) characters.")
+                    if (!answer || typeof answer != "number") {
+                        return ("The employee ID must be a numeric value.")
                     }
                     return true;
                 }
@@ -133,20 +136,22 @@ const engineerInputs = () => {
                 name: "email",
                 message: "Please enter your engineer's work E-mail address.",
                 validate: (answer) => {
-                    if (!answer || !answer.includes("@")) {
-                        return ("Please enter a valid E-mail address.")
+                    const regexEmailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+                    if (regexEmailVal.test(answer)) {
+                        return true
                     }
-                    return true;
+                    return ("Please enter a valid E-mail address.");
                 }
             },
 
             {
                 type: "input",
                 name: "github",
-                message: "Please enter your engineer's GitHub URL.",
+                message: "Please enter your engineer's GitHub username.",
                 validate: (answer) => {
                     if (!answer) {
-                        return ("Please enter a gitHub URL.")
+                        return ("Please enter a gitHub username.")
                     }
                     return true;
                 }
@@ -181,8 +186,8 @@ const internInputs = () => {
                 name: "id",
                 message: "Please enter the employee ID (Numeric characters only).",
                 validate: (answer) => {
-                    if (!answer || answer.length <= 2) {
-                        return ("The employee ID is a minimum of two (2) characters.")
+                    if (!answer || typeof answer != "number") {
+                        return ("The employee ID must be a numeric value.")
                     }
                     return true;
                 }
@@ -193,10 +198,12 @@ const internInputs = () => {
                 name: "email",
                 message: "Please enter your intern's work E-mail address.",
                 validate: (answer) => {
-                    if (!answer || !answer.includes("@")) {
-                        return ("Please enter a valid E-mail address.")
+                    const regexEmailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+                    if (regexEmailVal.test(answer)) {
+                        return true
                     }
-                    return true;
+                    return ("Please enter a valid E-mail address.");
                 }
             },
 
@@ -226,7 +233,7 @@ const internInputs = () => {
 function writeToFile() {
 
     fs.writeFileSync("./dist/index.html", generateFile(allEmployees), (err) => {
-        err ? console.error(err) : console.log("index.html created!")
+        err ? console.error(err) : console.log("Index.html created!")
     });
 
 

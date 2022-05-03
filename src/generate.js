@@ -14,6 +14,8 @@ function createFile(allEmployees) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Profile Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
 
@@ -60,29 +62,37 @@ function createEmployeeCards(allEmployees) {
             otherDetail += "Office Number: "
         };
 
-        //if statement to change the colours on the cards based on role
+        //if statement to change the icon and colours on the cards based on role
         let borderColour = "";
         let backgroundColor = "";
+        let icon = "";
 
         if (allEmployees[i].role === "Engineer") {
-            borderColour += "border-success"
-            backgroundColor += "bg-success"
+            borderColour += "border-success";
+            backgroundColor += "bg-success bg-opacity-75";
+            icon += '<i class="fa-solid fa-laptop-code"></i>';
+
         } else if (allEmployees[i].role === "Intern") {
-            borderColour += "border-warning"
-            backgroundColor += "bg-warning"
+            borderColour += "border-warning";
+            backgroundColor += "bg-warning bg-opacity-75";
+            icon += '<i class="fa-solid fa-graduation-cap"></i>';
+
         } else {
-            borderColour += "border-info"
-            backgroundColor += "bg-info"
+            borderColour += "border-info";
+            backgroundColor += "bg-info bg-opacity-75";
+            icon += '<i class="fa-solid fa-people-group"></i>';
+
         }
 
-        //if statement to dynamically create gitHub URL
+        //if statement to dynamically create gitHub URL for each engineer card
         let gitURL = "";
 
         if (allEmployees[i].gitHub !== undefined) {
             gitURL += `<a href="https://github.com/${allEmployees[i].gitHub}">${allEmployees[i].gitHub}</a>`
-        } else {
-            gitURL = "";
         }
+        // else {
+        //     gitURL = "";
+        // }
 
         //dynamically create card details for each role in the allEmployees array
         cardDetails +=
@@ -90,11 +100,11 @@ function createEmployeeCards(allEmployees) {
             <div class="col-sm-4">
                 <div class="card mt-5 ${borderColour}">
                     <div class="card-header ${backgroundColor}">
-                        <h2 class="card-title">${allEmployees[i].name}</h2>
-                        <h3 class="card-subtitle">${allEmployees[i].role}</h3>
+                        <h2 class="card-title border-bottom border-secondary pb-2">${allEmployees[i].name}</h2>
+                        <h3 class="card-subtitle">${icon} ${allEmployees[i].role}</h3>
                     </div>
                     <div class="card-body bg-light">
-                        <ul class="list-group">
+                        <ul class="list-group m-3">
                             <li class="list-group-item"><span class="heavy-text">ID:</span> ${allEmployees[i].id}</li>
                             <li class="list-group-item"><span class="heavy-text">Email: </span><a href="mailto:${allEmployees[i].email}">${allEmployees[i].email}</a></li>
                             <li class="list-group-item"><span class="heavy-text">${otherDetail}</span>${gitURL || allEmployees[i].school || allEmployees[i].officeNumber}</li>
