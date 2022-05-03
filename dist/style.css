@@ -1,23 +1,28 @@
+/* set the font for the page */
 * {
     font-family: 'Mulish', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* styling for the header */
 header {
-    background: linear-gradient(30deg, rgba(19, 85, 129, 1), rgba(10, 235, 148, 1));
+    background-color: rgba(19, 85, 129, 1);
     text-align: center;
     color: white;
     text-shadow: 0.1rem 0.1rem 0.1rem black;
     padding: 3rem;
 }
 
+/* styling for the subtitles */
 h3 {
     font-size: 1.5rem;
 }
 
+/* styling for spans so that the font is bold */
 .heavy-text {
     font-weight: 900;
 }
 
+/* adding a box-shadow to the cards as I didn't like the bootstrap defaults */
 .card {
     box-shadow: 0.5rem 0.5rem 0.5rem rgb(212, 212, 212);
 }

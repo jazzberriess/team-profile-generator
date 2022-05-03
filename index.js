@@ -228,12 +228,11 @@ const internInputs = () => {
         .catch((error) => console.error(error))
 };
 
-//Create an index.html file that contains the data storeed in the allEmployees array
-
+//Create an index.html file that contains the data stored in the allEmployees array
 function writeToFile() {
 
-    fs.writeFileSync("./dist/index.html", generateFile(allEmployees), (err) => {
-        err ? console.error(err) : console.log("Index.html created!")
+    fs.writeFile("./dist/index.html", generateFile(allEmployees), (err) => {
+        err ? console.error(err) : console.log("Team roster generated in the index.html file!")
     });
 
 

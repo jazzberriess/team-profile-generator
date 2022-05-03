@@ -21,7 +21,7 @@ function createFile(allEmployees) {
 
 <body>
     <header>
-        <h1> My Team</h1>
+        <h1> Team Profiles</h1>
     </header>
 
     <section>
@@ -90,9 +90,6 @@ function createEmployeeCards(allEmployees) {
         if (allEmployees[i].gitHub !== undefined) {
             gitURL += `<a href="https://github.com/${allEmployees[i].gitHub}">${allEmployees[i].gitHub}</a>`
         }
-        // else {
-        //     gitURL = "";
-        // }
 
         //dynamically create card details for each role in the allEmployees array
         cardDetails +=
