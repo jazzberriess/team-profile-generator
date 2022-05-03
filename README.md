@@ -61,7 +61,7 @@ The index.html file that was generated during this video can be found by viewing
 ![Demo of the generated index.html file](./images/team-profile-generator-index.html-demo.gif)
 
 ### Screenshot of the rendered index.html page:
-![Demo of the rendered index.html file](./images/team-profile-generator-index.html-preview.png)
+![Demo of the rendered index.html file](./images/team-profile-generator-rendered-index.html-file.png)
 
 
 ## Resources
