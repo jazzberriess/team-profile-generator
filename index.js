@@ -225,8 +225,9 @@ const internInputs = () => {
 
 function writeToFile() {
 
-    fs.appendFileSync("./dist/index.html", generateFile(allEmployees));
-    console.log("index.html created!");
+    fs.writeFileSync("./dist/index.html", generateFile(allEmployees), (err) => {
+        err ? console.error(err) : console.log("index.html created!")
+    });
 
 
 }
